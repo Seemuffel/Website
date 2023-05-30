@@ -18,9 +18,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $username = $_POST["username"];
         $password = $_POST["password"];
 
-        // SQL-Befehl zum Überprüfen der Anmeldedaten
-        $sql = "SELECT * FROM benutzer WHERE username = '$username' AND password = '$password'";
-        $result = $conn->query($sql);
+        // Prepared Statement erstellen
+        $stmt = $conn->prepare("SELECT * FROM benutzer WHERE username = ? AND password = ?");
+        $stmt->bind_param("ss", $username, $password);
+        $stmt->execute();
+
+        $result = $stmt->get_result();
 
         if ($result->num_rows > 0) {
             // Anmeldung erfolgreich
@@ -29,8 +32,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } else {
             echo "Falscher Benutzername oder falsches Passwort.";
         }
+
+        $stmt->close();
     } else {
-        echo "Fehlende Benutzername oder Passwort in der Anfrage.";
+        echo "Fehlender Benutzername oder Passwort in der Anfrage.";
     }
 }
 
