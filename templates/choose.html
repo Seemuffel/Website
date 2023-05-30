@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Auswahl</title>
+</head>
+<body>
+    <h1>Auswahl treffen</h1>
+    <form method="POST" action="/choose">
+        <input type="hidden" name="username" value="{{ request.form.username }}">
+        <label>
+            <input type="radio" name="selection" value="Apfel"> Apfel
+        </label><br>
+        <label>
+            <input type="radio" name="selection" value="Banane"> Banane
+        </label><br>
+        <label>
+            <input type="radio" name="selection" value="Kiwi"> Kiwi
+        </label><br><br>
+        <input type="submit" value="Auswahl speichern">
+    </form>
+</body>
+</html>
