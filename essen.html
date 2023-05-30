@@ -11,17 +11,10 @@
         echo "Benutzername: " . $username;
     ?>
     <form action="speichern.php" method="POST">
-        <input type="hidden" name="username" valu e="<?ephp echo$username; ?>">
+        <input type="hidden" name="username" value="<?php echo $username; ?>">
         <input type="radio" name="essen" value="Apfel"> Apfel<br>
         <input type="radio" name="essen" value="Banane"> Banane<br>
         <input type="radio" name="essen" value="Kiwi"> Kiwi<br>
-        
-        <?php
-        if (value == Apfel)
-        {
-            essen = Apfel;
-        }
-        ?>
         <br>
         <input type="submit" value="Auswählen">
     </form>
